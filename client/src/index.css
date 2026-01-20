@@ -57,6 +57,9 @@
   --shadow-2xl: 0px 2px 0px 0px hsl(9, 75%, 61% / 0.00);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --surface-vibrant: 248 80% 95%;
+  --surface-vibrant-2: 280 70% 92%;
+  --surface-accent-glow: 248 60% 85%;
 
 /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
@@ -135,6 +138,9 @@
   --shadow-lg: 0px 2px 0px 0px hsl(9 75% 61% / 0.00), 0px 4px 6px -1px hsl(9 75% 61% / 0.00);
   --shadow-xl: 0px 2px 0px 0px hsl(9 75% 61% / 0.00), 0px 8px 10px -1px hsl(9 75% 61% / 0.00);
   --shadow-2xl: 0px 2px 0px 0px hsl(9 75% 61% / 0.00);
+  --surface-vibrant: 248 50% 25%;
+  --surface-vibrant-2: 280 40% 20%;
+  --surface-accent-glow: 9 60% 30%;
 
 /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
