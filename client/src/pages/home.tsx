@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { SiNodedotjs, SiExpress, SiOpenai } from "react-icons/si";
 
-import heroImage from "@assets/generated_images/fashion_tech_system_hero.png";
+import heroImage from "@assets/generated_images/clean_abstract_tech_background.png";
 import appMockup from "@assets/generated_images/mobile_app_chat_mockup.png";
 import iotDevice from "@assets/generated_images/iot_closet_sensor_device.png";
 import architectureDiagram from "@assets/generated_images/system_architecture_diagram.png";
@@ -76,7 +76,7 @@ function Header() {
         <div className="flex items-center justify-between h-16 gap-4">
           <div className="flex items-center gap-2">
             <Shirt className="h-6 w-6 text-primary" />
-            <span className="font-semibold text-lg">FashionAI</span>
+            <span className="font-semibold text-lg">Asistente Luis Rabal Pérez</span>
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -138,16 +138,14 @@ function HeroSection() {
         <img
           src={heroImage}
           alt="Tecnología de moda inteligente"
-          className="w-full h-full object-cover brightness-110"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-background/90 dark:from-primary/30 dark:via-background/40 dark:to-background" />
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/30 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-background/70 dark:bg-background/80" />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-20 text-center relative z-10">
         <Badge variant="secondary" className="mb-6">
-          Trabajo Fin de Grado - Ingeniería
+          Trabajo Fin de Grado - Diseño de Producto
         </Badge>
 
         <h1 className="text-4xl md:text-6xl font-semibold mb-6 leading-tight">
@@ -280,14 +278,10 @@ function SystemSection() {
 
 function ArchitectureSection() {
   return (
-    <section id="arquitectura" className="py-12 md:py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-tl from-blue-500/10 via-background to-primary/10 dark:from-blue-600/15 dark:via-background dark:to-primary/15" />
-      <div className="absolute top-20 right-20 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
-      
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
+    <section id="arquitectura" className="py-12 md:py-20 bg-muted/30">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
-          <Badge variant="outline" className="mb-4 bg-blue-500/10 border-blue-500/30">
+          <Badge variant="outline" className="mb-4">
             Arquitectura
           </Badge>
           <h2 className="text-2xl md:text-4xl font-semibold mb-4">
@@ -298,8 +292,8 @@ function ArchitectureSection() {
           </p>
         </div>
 
-        <Card className="p-6 md:p-10 bg-gradient-to-br from-card via-card to-blue-500/5 border-2 border-blue-500/20">
-          <div className="mb-8 rounded-lg overflow-hidden bg-gradient-to-r from-blue-500/10 to-primary/10 p-4">
+        <Card className="p-6 md:p-10">
+          <div className="mb-8 rounded-lg overflow-hidden bg-muted/30 p-4">
             <img
               src={architectureDiagram}
               alt="Diagrama de arquitectura del sistema"
@@ -408,20 +402,11 @@ function FeaturesSection() {
     },
   ];
 
-  const featureColors = [
-    { bg: "from-emerald-500/15 to-transparent", border: "border-emerald-500/30", icon: "text-emerald-600 dark:text-emerald-400", iconBg: "bg-emerald-500/20" },
-    { bg: "from-violet-500/15 to-transparent", border: "border-violet-500/30", icon: "text-violet-600 dark:text-violet-400", iconBg: "bg-violet-500/20" },
-    { bg: "from-amber-500/15 to-transparent", border: "border-amber-500/30", icon: "text-amber-600 dark:text-amber-400", iconBg: "bg-amber-500/20" },
-    { bg: "from-rose-500/15 to-transparent", border: "border-rose-500/30", icon: "text-rose-600 dark:text-rose-400", iconBg: "bg-rose-500/20" },
-  ];
-
   return (
-    <section className="py-12 md:py-20 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-rose-500/5" />
-      
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
+    <section className="py-12 md:py-20 bg-background">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
-          <Badge variant="outline" className="mb-4 bg-emerald-500/10 border-emerald-500/30">
+          <Badge variant="outline" className="mb-4">
             Funcionalidades
           </Badge>
           <h2 className="text-2xl md:text-4xl font-semibold mb-4">
@@ -434,14 +419,14 @@ function FeaturesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <Card
               key={feature.title}
-              className={`p-6 flex items-start gap-4 hover-elevate transition-all duration-300 border-2 bg-gradient-to-br ${featureColors[index].bg} ${featureColors[index].border}`}
+              className="p-6 flex items-start gap-4 hover-elevate transition-all duration-300"
               data-testid={`card-feature-${feature.title.toLowerCase().replace(/\s+/g, "-")}`}
             >
-              <div className={`p-3 rounded-lg shrink-0 ${featureColors[index].iconBg}`}>
-                <feature.icon className={`h-5 w-5 ${featureColors[index].icon}`} />
+              <div className="p-3 bg-primary/10 rounded-lg shrink-0">
+                <feature.icon className="h-5 w-5 text-primary" />
               </div>
               <div>
                 <h3 className="font-semibold mb-2">{feature.title}</h3>
@@ -482,14 +467,10 @@ function TechnologySection() {
   ];
 
   return (
-    <section id="tecnologia" className="py-12 md:py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-purple-500/10 dark:from-primary/20 dark:via-background dark:to-purple-600/15" />
-      <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-purple-500/20 rounded-full blur-3xl" />
-      
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
+    <section id="tecnologia" className="py-12 md:py-20 bg-muted/30">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
-          <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/30">
+          <Badge variant="outline" className="mb-4">
             Stack Tecnológico
           </Badge>
           <h2 className="text-2xl md:text-4xl font-semibold mb-4">
@@ -501,52 +482,42 @@ function TechnologySection() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {technologies.map((tech, index) => (
+          {technologies.map((tech) => (
             <Card
               key={tech.name}
-              className={`p-6 text-center hover-elevate transition-all duration-300 border-2 ${
-                index === 0 ? "border-green-500/30 bg-gradient-to-br from-green-500/10 to-transparent" :
-                index === 1 ? "border-blue-500/30 bg-gradient-to-br from-blue-500/10 to-transparent" :
-                index === 2 ? "border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-transparent" :
-                "border-orange-500/30 bg-gradient-to-br from-orange-500/10 to-transparent"
-              }`}
+              className="p-6 text-center hover-elevate transition-all duration-300"
               data-testid={`card-tech-${tech.name.toLowerCase().replace(/\s+/g, "-")}`}
             >
-              <tech.icon className={`h-10 w-10 mx-auto mb-4 ${
-                index === 0 ? "text-green-600 dark:text-green-400" :
-                index === 1 ? "text-blue-600 dark:text-blue-400" :
-                index === 2 ? "text-purple-600 dark:text-purple-400" :
-                "text-orange-600 dark:text-orange-400"
-              }`} />
+              <tech.icon className="h-10 w-10 mx-auto mb-4 text-primary" />
               <h3 className="font-semibold mb-1">{tech.name}</h3>
               <p className="text-xs text-muted-foreground">{tech.description}</p>
             </Card>
           ))}
         </div>
 
-        <Card className="mt-8 p-6 md:p-8 bg-gradient-to-br from-card via-card to-primary/5 border-2 border-primary/20">
-          <h3 className="font-semibold mb-4 text-center text-primary">Endpoints de la API</h3>
+        <Card className="mt-8 p-6 md:p-8">
+          <h3 className="font-semibold mb-4 text-center">Endpoints de la API</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-gradient-to-r from-green-500/20 to-green-500/5 dark:from-green-500/30 dark:to-green-500/10 rounded-lg border border-green-500/30">
-              <code className="text-sm font-mono text-green-700 dark:text-green-400">POST /api/chat</code>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <code className="text-sm font-mono text-primary">POST /api/chat</code>
               <p className="text-xs text-muted-foreground mt-1">
                 Envía mensajes al asistente de moda
               </p>
             </div>
-            <div className="p-4 bg-gradient-to-r from-blue-500/20 to-blue-500/5 dark:from-blue-500/30 dark:to-blue-500/10 rounded-lg border border-blue-500/30">
-              <code className="text-sm font-mono text-blue-700 dark:text-blue-400">GET /api/wardrobe</code>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <code className="text-sm font-mono text-primary">GET /api/wardrobe</code>
               <p className="text-xs text-muted-foreground mt-1">
                 Obtiene el inventario del armario
               </p>
             </div>
-            <div className="p-4 bg-gradient-to-r from-purple-500/20 to-purple-500/5 dark:from-purple-500/30 dark:to-purple-500/10 rounded-lg border border-purple-500/30">
-              <code className="text-sm font-mono text-purple-700 dark:text-purple-400">POST /api/wardrobe</code>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <code className="text-sm font-mono text-primary">POST /api/wardrobe</code>
               <p className="text-xs text-muted-foreground mt-1">
                 Añade una nueva prenda al inventario
               </p>
             </div>
-            <div className="p-4 bg-gradient-to-r from-orange-500/20 to-orange-500/5 dark:from-orange-500/30 dark:to-orange-500/10 rounded-lg border border-orange-500/30">
-              <code className="text-sm font-mono text-orange-700 dark:text-orange-400">POST /api/wardrobe/event</code>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <code className="text-sm font-mono text-primary">POST /api/wardrobe/event</code>
               <p className="text-xs text-muted-foreground mt-1">
                 Recibe eventos del objeto físico
               </p>
@@ -565,12 +536,12 @@ function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Shirt className="h-5 w-5 text-primary" />
-            <span className="font-semibold">FashionAI</span>
+            <span className="font-semibold">Asistente Luis Rabal Pérez</span>
           </div>
 
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">
-              Trabajo Fin de Grado - Ingeniería Informática
+              Trabajo Fin de Grado - Diseño de Producto
             </p>
             <p className="text-xs text-muted-foreground mt-1">
               Curso Académico 2024-2025
