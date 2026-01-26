@@ -61,7 +61,14 @@ app.use((req, res, next) => {
 
 (async () => {
   try {
+    console.log("Starting server...");
+    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("PORT:", process.env.PORT);
+    console.log("__dirname:", __dirname);
+    console.log("process.cwd():", process.cwd());
+
     await registerRoutes(httpServer, app);
+    console.log("Routes registered successfully");
 
     app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
       const status = err.status || err.statusCode || 500;
@@ -80,7 +87,9 @@ app.use((req, res, next) => {
     // setting up all the other routes so the catch-all route
     // doesn't interfere with the other routes
     if (process.env.NODE_ENV === "production") {
+      console.log("Setting up static file serving...");
       serveStatic(app);
+      console.log("Static files configured");
     } else {
       const { setupVite } = await import("./vite");
       await setupVite(httpServer, app);
@@ -91,12 +100,15 @@ app.use((req, res, next) => {
     // this serves both the API and the client.
     // It is the only port that is not firewalled.
     const port = parseInt(process.env.PORT || "5000", 10);
+    console.log(`Attempting to listen on port ${port}...`);
     
     httpServer.listen(port, "0.0.0.0", () => {
-      log(`serving on port ${port}`);
+      log(`✓ Server is serving on port ${port}`);
+      console.log(`✓ Server is ready and listening on http://0.0.0.0:${port}`);
     });
 
     httpServer.on("error", (err: NodeJS.ErrnoException) => {
+      console.error("Server error occurred:", err);
       if (err.code === "EADDRINUSE") {
         log(`Port ${port} is already in use`);
       } else {
@@ -106,6 +118,9 @@ app.use((req, res, next) => {
     });
   } catch (error) {
     console.error("Failed to start server:", error);
+    if (error instanceof Error) {
+      console.error("Error stack:", error.stack);
+    }
     process.exit(1);
   }
 })();
