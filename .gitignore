@@ -4,3 +4,24 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+
+# Archivos de Replit (no necesarios para producción)
+.local/
+.replit
+replit.md
+
+# Variables de entorno (no subir credenciales)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos temporales
+*.tmp
+*.temp
+.cache/
