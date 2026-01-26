@@ -11,6 +11,25 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  // Health check endpoint - must be first to ensure it's always available
+  app.get("/health", (_req, res) => {
+    res.status(200).json({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      env: process.env.NODE_ENV || "unknown"
+    });
+  });
+
+  app.get("/api/health", (_req, res) => {
+    res.status(200).json({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      env: process.env.NODE_ENV || "unknown"
+    });
+  });
+  
   app.post("/api/chat", async (req, res) => {
     try {
       const parsed = chatRequestSchema.safeParse(req.body);

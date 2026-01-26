@@ -105,6 +105,15 @@ app.use((req, res, next) => {
     httpServer.listen(port, "0.0.0.0", () => {
       log(`✓ Server is serving on port ${port}`);
       console.log(`✓ Server is ready and listening on http://0.0.0.0:${port}`);
+      console.log(`✓ Health check available at http://0.0.0.0:${port}/health`);
+      
+      // Verify the server is actually listening
+      const address = httpServer.address();
+      if (address) {
+        console.log(`✓ Server address:`, address);
+      } else {
+        console.error(`✗ Server address is null - server may not be listening correctly`);
+      }
     });
 
     httpServer.on("error", (err: NodeJS.ErrnoException) => {
