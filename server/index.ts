@@ -116,6 +116,34 @@ app.use((req, res, next) => {
       }
       process.exit(1);
     });
+
+    // Keep the process alive
+    process.on('SIGTERM', () => {
+      console.log('SIGTERM received, shutting down gracefully');
+      httpServer.close(() => {
+        console.log('Server closed');
+        process.exit(0);
+      });
+    });
+
+    process.on('SIGINT', () => {
+      console.log('SIGINT received, shutting down gracefully');
+      httpServer.close(() => {
+        console.log('Server closed');
+        process.exit(0);
+      });
+    });
+
+    // Handle uncaught exceptions
+    process.on('uncaughtException', (err) => {
+      console.error('Uncaught Exception:', err);
+      process.exit(1);
+    });
+
+    process.on('unhandledRejection', (reason, promise) => {
+      console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+      process.exit(1);
+    });
   } catch (error) {
     console.error("Failed to start server:", error);
     if (error instanceof Error) {
