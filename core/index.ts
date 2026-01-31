@@ -71,13 +71,11 @@ app.use((req, res, next) => {
 
 (async () => {
   try {
-    // Set NODE_ENV to development if not set (for local development)
-    if (!process.env.NODE_ENV) {
-      process.env.NODE_ENV = "development";
-    }
+    // NODE_ENV is set by esbuild in production build, or defaults to development
+    const nodeEnv = process.env.NODE_ENV || "development";
     
     console.log("Starting server...");
-    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("NODE_ENV:", nodeEnv);
 
     await registerRoutes(httpServer, app);
 
@@ -95,7 +93,7 @@ app.use((req, res, next) => {
     });
 
     // Setup Vite in development, static serving in production
-    if (process.env.NODE_ENV === "production") {
+    if (nodeEnv === "production") {
       serveStatic(app);
     } else {
       const { setupVite } = await import("../05-web/vite");
