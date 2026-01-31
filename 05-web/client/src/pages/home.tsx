@@ -20,7 +20,8 @@ import {
 } from "lucide-react";
 import { SiNodedotjs, SiExpress, SiOpenai } from "react-icons/si";
 
-import heroImage from "@assets/generated_images/organized_closet_with_clothes.png";
+// Imagen servida desde public (ruta explícita en servidor); ?v=1 evita caché vieja con @fs
+const heroImage = "/hero.png?v=1";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

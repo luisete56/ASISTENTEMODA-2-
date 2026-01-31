@@ -1,5 +1,5 @@
-import { type WardrobeEventResponse } from "@shared/schema";
-import { storage } from "../storage";
+import { type WardrobeEventResponse } from "@shared/schemas";
+import { storage } from "../02-database/storage";
 
 export async function processWardrobeEvent(imagenCapturada?: string): Promise<WardrobeEventResponse> {
   await new Promise((resolve) => setTimeout(resolve, 300));

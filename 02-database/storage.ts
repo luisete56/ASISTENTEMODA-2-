@@ -1,4 +1,4 @@
-import { type ClothingItem, type InsertClothingItem } from "@shared/schema";
+import { type ClothingItem, type InsertClothingItem } from "./schema";
 import { randomUUID } from "crypto";
 
 export interface IStorage {

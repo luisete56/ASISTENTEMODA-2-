@@ -1,0 +1,29 @@
+============================================
+  ASISTENTE DE MODA - CÓMO EJECUTAR
+============================================
+
+Este proyecto es una aplicación NODE.JS (Express + React).
+NO se abre con Apache/XAMPP como una carpeta normal.
+
+PASOS:
+
+1. Abre una terminal (CMD o PowerShell) en ESTA carpeta del proyecto.
+
+2. Instala dependencias (solo la primera vez):
+   npm install
+
+3. Arranca el servidor:
+   npm start
+
+4. Abre en el navegador EXACTAMENTE esta URL:
+   http://localhost:5000
+
+   (No uses http://localhost/ ni la ruta de XAMPP/htdocs)
+
+5. Si la imagen o la página no cargan, recarga con Ctrl+Shift+R
+   para vaciar la caché del navegador.
+
+============================================
+Requisitos: Node.js 18+ instalado.
+Para producción: npm run build  y luego  npm run start:prod
+============================================
