@@ -193,7 +193,7 @@ const servicioImages = [
         alt: "Tu foto de perfil para que el asistente genere las previsualizaciones",
       },
       {
-        src: "/8bfa1f49-6a3d-4d7d-8603-ec716c0e4bd8.jfif",
+        src: "/62950ac8-89e0-42a3-89d7-19ff33a54b4d.png",
         alt: "Resultado: cómo te quedarían las combinaciones puestas",
       },
     ],
