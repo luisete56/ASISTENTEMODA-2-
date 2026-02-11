@@ -20,8 +20,8 @@ import {
 } from "lucide-react";
 import { SiNodedotjs, SiExpress, SiOpenai } from "react-icons/si";
 
-// Imagen servida desde public (ruta explícita en servidor); ?v=1 evita caché vieja con @fs
-const heroImage = "/hero.png?v=1";
+// Imagen del producto 3D (objeto físico) — lo primero que ve el visitante
+const productoHeroImage = "/063e6e72-2cd5-4794-83b4-d3d5e2933e62.jfif?v=1";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,6 +35,7 @@ function Header() {
 
   const navItems = [
     { label: "Inicio", href: "#hero" },
+    { label: "El servicio", href: "#el-servicio" },
     { label: "Sistema", href: "#sistema" },
     { label: "Arquitectura", href: "#arquitectura" },
     { label: "Tecnología", href: "#tecnologia" },
@@ -107,53 +108,169 @@ function HeroSection() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-background"
     >
-      <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Tecnología de moda inteligente"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-background/15 dark:bg-background/20" />
+      <div className="max-w-6xl mx-auto px-4 py-12 md:py-16 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+        <div className="flex-1 flex justify-center order-2 md:order-1">
+          <img
+            src={productoHeroImage}
+            alt="Asistente de moda: objeto 3D sobre el armario con visión artificial"
+            className="max-h-[50vh] md:max-h-[65vh] w-auto object-contain drop-shadow-2xl"
+          />
+        </div>
+        <div className="flex-1 text-center md:text-left order-1 md:order-2">
+          <Badge variant="secondary" className="mb-4">
+            Proyecto de diseño
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-semibold mb-4 leading-tight">
+            Asistente de Moda
+            <br />
+            <span className="text-primary">Inteligente</span>
+          </h1>
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mb-6">
+            Objeto pensado para colocarse encima del armario e integrarse en el
+            hogar. Detecta con visión artificial las prendas que entran y salen,
+            genera un inventario dinámico y se conecta con una app que te
+            aconseja qué ponerte y te muestra cómo te quedarían tus combinaciones.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3">
+            <Button size="lg" asChild data-testid="button-discover">
+              <a href="#el-servicio">
+                Ver el servicio
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild data-testid="button-api">
+              <a href="#sistema">El sistema</a>
+            </Button>
+          </div>
+        </div>
       </div>
+      <a
+        href="#el-servicio"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+        data-testid="link-scroll-down"
+      >
+        <ChevronDown className="h-6 w-6 text-muted-foreground" />
+      </a>
+    </section>
+  );
+}
 
-      <div className="max-w-6xl mx-auto px-4 py-20 text-center relative z-10">
-        <Badge variant="secondary" className="mb-6">
-          Trabajo Fin de Grado - Diseño de Producto
-        </Badge>
+function RenderSection() {
+  return (
+    <section className="py-0 bg-background">
+      <div className="max-w-6xl mx-auto">
+        <img
+          src="/render.png"
+          alt="El asistente de moda colocado sobre el armario, integrado en el hogar"
+          className="w-full h-auto object-cover"
+        />
+      </div>
+    </section>
+  );
+}
 
-        <h1 className="text-4xl md:text-6xl font-semibold mb-6 leading-tight">
-          Asistente de Moda
-          <br />
-          <span className="text-primary">Inteligente</span>
-        </h1>
+const servicioImages = [
+  {
+    src: "/823077bc-1a6c-4565-81cb-a752b3024b7c.jfif",
+    alt: "Mi Armario: el asistente sabe lo que hay en tu armario",
+    title: "Un asistente que sabe lo que hay en tu armario",
+    description:
+      "Lleva el control de tus prendas: qué tienes, qué está en el armario o fuera. El asistente conoce tu vestuario al dedillo.",
+  },
+  {
+    src: "/1de8e652-f5d4-42b8-89bc-1bfb9d98ae3f.jfif",
+    alt: "Pregúntale sobre estilos y conjuntos",
+    title: "Pregúntale sobre estilos, qué ponerte, cómo mejorar tus conjuntos",
+    description:
+      "Consulta combinaciones, estilos o qué ponerte hoy. Te aconseja y te ayuda a mejorar tus looks.",
+  },
+  {
+    images: [
+      {
+        src: "/2f06b304-524b-4f98-8f09-ee67bc38d6c4.jfif",
+        alt: "Tu foto de perfil para que el asistente genere las previsualizaciones",
+      },
+      {
+        src: "/8bfa1f49-6a3d-4d7d-8603-ec716c0e4bd8.jfif",
+        alt: "Resultado: cómo te quedarían las combinaciones puestas",
+      },
+    ],
+    title: "Te genera fotos para que veas cómo te quedarían las combinaciones puestas",
+    description:
+      "Previsualizaciones con IA: combina tu foto con tu ropa y te muestra cómo te quedarían las combinaciones sin probártelas.",
+  },
+];
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-          Tecnología IoT + Inteligencia Artificial para gestionar tu armario de
-          forma inteligente. Un sistema distribuido que combina app móvil,
-          objeto físico y servidor central.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" asChild data-testid="button-discover">
-            <a href="#sistema">
-              Descubrir el Sistema
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-          <Button size="lg" variant="outline" asChild data-testid="button-api">
-            <a href="#arquitectura">Ver Arquitectura</a>
-          </Button>
+function ServicioSection() {
+  return (
+    <section id="el-servicio" className="py-12 md:py-20 bg-muted/30">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12 md:mb-16">
+          <Badge variant="outline" className="mb-4">
+            El asistente en tu día a día
+          </Badge>
+          <h2 className="text-2xl md:text-4xl font-semibold mb-4">
+            Así es el servicio
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Objeto en el armario, inventario dinámico y app que aconseja y
+            previsualiza looks con IA
+          </p>
+        </div>
+        {/* Servicios 1 y 2 en dos columnas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8">
+          {servicioImages.slice(0, 2).map((item) => (
+            <Card
+              key={item.title}
+              className="p-0 overflow-hidden hover-elevate transition-all duration-300 flex flex-col"
+            >
+              <div className="bg-muted/30 flex items-center justify-center min-h-[320px] md:min-h-[400px] p-3">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-auto max-h-[400px] md:max-h-[480px] object-contain"
+                />
+              </div>
+              <div className="p-5 flex-1">
+                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </Card>
+          ))}
         </div>
 
-        <a
-          href="#sistema"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
-          data-testid="link-scroll-down"
-        >
-          <ChevronDown className="h-6 w-6 text-muted-foreground" />
-        </a>
+        {/* Servicio 3: sección grande con las dos imágenes */}
+        {(() => {
+          const item = servicioImages[2];
+          return (
+            <Card className="p-0 overflow-hidden hover-elevate transition-all duration-300">
+              <div className="p-6 md:p-8 text-center">
+                <h3 className="text-xl md:text-2xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  {item.description}
+                </p>
+              </div>
+              {"images" in item && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 pb-8 md:px-8">
+                  {item.images.map((img, i) => (
+                    <div key={i} className="bg-muted/30 rounded-lg flex items-center justify-center p-4">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-auto h-auto max-h-[500px] md:max-h-[600px] object-contain rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Card>
+          );
+        })()}
+      
       </div>
     </section>
   );
@@ -166,7 +283,7 @@ function SystemSection() {
       number: "01",
       title: "App Móvil",
       description:
-        "Interfaz de conversación intuitiva con ChatGPT para consultas de moda personalizadas. Recibe recomendaciones y looks generados por IA.",
+        "Asistente personal que aconseja qué ponerte según contexto o preferencias, detecta posibles carencias en el vestuario y crea imágenes con IA para previsualizar cómo te quedarían combinaciones de prendas de tu armario.",
       features: ["Chat con IA", "Looks personalizados", "Gestión de prendas"],
     },
     {
@@ -174,7 +291,7 @@ function SystemSection() {
       number: "02",
       title: "Objeto Físico",
       description:
-        "Sensor inteligente instalado en el armario con visión artificial. Detecta automáticamente qué prendas entran y salen.",
+        "Asistente de moda como objeto tridimensional sobre el armario, integrado en el entorno doméstico. Detecta mediante visión artificial las prendas que entran y salen, generando un inventario dinámico del vestuario.",
       features: ["Visión artificial", "Detección automática", "Sincronización"],
     },
     {
@@ -182,7 +299,7 @@ function SystemSection() {
       number: "03",
       title: "Servidor Central",
       description:
-        "Backend que coordina toda la lógica y decisiones del sistema. Único punto de comunicación entre la app y el objeto físico.",
+        "Conecta la información del objeto con la aplicación móvil. Centraliza la lógica y la IA para un único estado del inventario y las decisiones del sistema.",
       features: ["API REST", "Lógica centralizada", "Procesamiento IA"],
     },
   ];
@@ -332,27 +449,27 @@ function FeaturesSection() {
   const features = [
     {
       icon: Shirt,
-      title: "Gestión de Inventario",
+      title: "Inventario dinámico",
       description:
-        "Almacena y organiza todas tus prendas con imágenes y estados actualizados automáticamente.",
+        "El objeto detecta las prendas que entran y salen del armario. La app refleja en tiempo real el estado de tu vestuario, siempre actualizado.",
     },
     {
       icon: MessageSquare,
-      title: "Consultas con IA",
+      title: "Asesoramiento contextual",
       description:
-        "Pregunta al asistente qué ponerte según la ocasión, clima o preferencias personales.",
+        "El asistente te aconseja qué ponerte según la ocasión, el contexto o tus preferencias, y detecta posibles carencias en tu armario.",
     },
     {
       icon: Camera,
-      title: "Detección Automática",
+      title: "Visión artificial",
       description:
-        "El sensor del armario detecta qué prendas sacas o guardas mediante visión artificial.",
+        "Visión artificial en el objeto físico para identificar qué prendas guardas o sacas del armario, sin que tengas que registrarlas a mano.",
     },
     {
       icon: Wand2,
-      title: "Generación de Looks",
+      title: "Previsualización con IA",
       description:
-        "Recibe sugerencias visuales de outfits completos generados por inteligencia artificial.",
+        "Imágenes generadas por IA que permiten previsualizar cómo te quedarían distintas combinaciones de prendas que ya posees.",
     },
   ];
 
@@ -367,8 +484,8 @@ function FeaturesSection() {
             Características Principales
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Un conjunto de funcionalidades diseñadas para revolucionar tu
-            experiencia con la moda
+            Inventario dinámico, asesoramiento y previsualización de looks con
+            tus prendas
           </p>
         </div>
 
@@ -512,8 +629,9 @@ function Footer() {
 
         <div className="mt-6 pt-6 border-t border-border text-center">
           <p className="text-xs text-muted-foreground">
-            Este proyecto es parte de un Trabajo Fin de Grado y tiene fines
-            exclusivamente académicos y de investigación.
+            Proyecto de diseño de producto: forma, integración tecnológica,
+            interacción física y viabilidad constructiva. Un sistema digital
+            materializado en un objeto claro y coherente con el hogar.
           </p>
         </div>
       </div>
@@ -527,6 +645,8 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <RenderSection />
+        <ServicioSection />
         <SystemSection />
         <ArchitectureSection />
         <FeaturesSection />

@@ -42,12 +42,20 @@ export async function setupVite(server: Server, app: Express) {
     appType: "custom",
   });
 
-  // Ruta explícita para la imagen hero; path absoluto para Windows y rutas con espacios
+  // Rutas explícitas para imágenes hero; path absoluto para Windows y rutas con espacios
   const publicDir = path.resolve(clientRoot, "public");
   const heroPath = path.resolve(publicDir, "hero.png");
+  const productoHeroPath = path.resolve(publicDir, "063e6e72-2cd5-4794-83b4-d3d5e2933e62.jfif");
   app.get("/hero.png", (_req, res) => {
     if (fs.existsSync(heroPath)) {
       res.type("image/png").sendFile(heroPath);
+    } else {
+      res.status(404).send("Not found");
+    }
+  });
+  app.get("/063e6e72-2cd5-4794-83b4-d3d5e2933e62.jfif", (_req, res) => {
+    if (fs.existsSync(productoHeroPath)) {
+      res.type("image/jpeg").sendFile(productoHeroPath);
     } else {
       res.status(404).send("Not found");
     }
